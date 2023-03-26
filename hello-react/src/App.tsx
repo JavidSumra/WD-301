@@ -1,3 +1,4 @@
+import React from "react";
 import Task from "./TaskCard";
 
 function App() {
@@ -15,11 +16,13 @@ function App() {
               title="Build the website with static content"
               dueDate="10th September"
               assigneeName="Rohit S"
+              completedAtDate=""
             />
             <Task
               title="Add a blog"
               dueDate="22nd December"
               assigneeName="Rohit M"
+              completedAtDate=""
             />
           </div>
           <div className="text-2xl bg-slate-300 rounded p-2 cursor-pointer">
@@ -32,12 +35,19 @@ function App() {
             title="Design the mockup"
             completedAtDate="10th March"
             assigneeName="Rohit M"
+            dueDate=""
           />
           <Task
             title="Get the approval from principal"
             completedAtDate="20th February"
             assigneeName="Ajay S"
+            dueDate=""
           />
+          {/* <Task
+            title="New Work"
+            completedAtDate="5th December"
+            assigneeName="Javid"
+          /> */}
         </div>
       </div>
     </div>
