@@ -27,7 +27,7 @@ const card = (props: {
       {props.dueDate ? (
         <h3 className="text-sm">Due on: {TaksItem.dueDate}</h3>
       ) : (
-        <h3 className="text-sm">Completed: {TaksItem.completedAtDate}</h3>
+        <h3 className="text-sm">Completed on: {TaksItem.completedAtDate}</h3>
       )}
       <h3 className="text-sm">Assignee: {TaksItem.assigneeName}</h3>
     </div>
