@@ -7,7 +7,7 @@ interface Props {
   removeTask: (title: string) => void;
 }
 
-interface State {}
+//interface State {}
 
 const TaskList = (props: Props) => {
   const list = props.tasks.map((task, idx) => (
