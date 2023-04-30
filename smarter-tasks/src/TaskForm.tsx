@@ -120,7 +120,7 @@ const TaskForm = (props: TaskFormProps) => {
           >
             Add item
           </button>
-        </div>{" "}
+        </div>
       </div>
     </form>
   );
