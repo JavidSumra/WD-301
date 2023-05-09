@@ -9,13 +9,20 @@ interface TaskFormState {
   title: string;
   dueDate: string;
   description: string;
+  id: string;
 }
+
+let Id = 0;
+const getId = () => {
+  return (Id += 1);
+};
 
 const TaskForm = (props: TaskFormProps) => {
   const [formState, setFormState] = React.useState<TaskFormState>({
     title: "",
     description: "",
     dueDate: "",
+    id: "",
   });
 
   // class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
@@ -34,8 +41,9 @@ const TaskForm = (props: TaskFormProps) => {
     if (formState.title.length === 0 || formState.dueDate.length === 0) {
       return;
     }
+    formState.id = String(getId());
     props.addTask(formState);
-    setFormState({ title: "", description: "", dueDate: "" });
+    setFormState({ title: "", description: "", dueDate: "", id: "" });
   };
 
   const titleChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
