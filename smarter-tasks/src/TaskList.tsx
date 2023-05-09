@@ -7,12 +7,12 @@ interface Props {
   removeTask: (title: string) => void;
 }
 
-//interface State {}
+interface State {}
 
 const TaskList = (props: Props) => {
-  const list = props.tasks.map((task, idx) => (
+  const list = props.tasks.map((task) => (
     <Task
-      key={idx}
+      id={task.id}
       title={task.title}
       dueDate={task.dueDate}
       description={task.description}
