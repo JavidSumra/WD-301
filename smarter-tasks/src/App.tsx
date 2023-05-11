@@ -18,7 +18,7 @@ function App() {
       {location.pathname !== "/signin" && location.pathname !== "/notfound" && (
         <Header />
       )}
-      <div>{location.pathname}</div>
+      
 
       <Routes>
         <Route path="/" element={<ProtectedRoute element={<HomePage />} />} />
