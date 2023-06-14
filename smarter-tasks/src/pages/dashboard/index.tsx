@@ -27,8 +27,8 @@ const Dashboard: React.FC = () => {
         </div>
       </h1>
       <div className="flex flex-col text-2xl justify-between items-center text-gray-800">
-        <p>Name : {parsedData.user.name}</p>
-        <p>Email : {parsedData.user.email}</p>
+        <p>Name : {parsedData.name}</p>
+        <p>Email : {parsedData.email}</p>
       </div>
     </div>
   );
