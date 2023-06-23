@@ -59,6 +59,9 @@ const SignupForm: React.FC = () => {
           }`}
           {...register("organisationName", { required: true })}
         />
+        {errors.organisationName && (
+          <span className="text-red-500 text-sm">This field is required</span>
+        )}
       </div>
       <div>
         <label className="block text-gray-700 font-semibold mb-2">
@@ -72,6 +75,9 @@ const SignupForm: React.FC = () => {
           }`}
           {...register("userName", { required: true })}
         />
+        {errors.userName && (
+          <span className="text-red-500 text-sm">This field is required</span>
+        )}
       </div>
       <div>
         <label className="block text-gray-700 font-semibold mb-2">Email:</label>
@@ -83,6 +89,9 @@ const SignupForm: React.FC = () => {
           }`}
           {...register("userEmail", { required: true })}
         />
+        {errors.userEmail && (
+          <span className="text-red-500 text-sm">This field is required</span>
+        )}
       </div>
       <div>
         <label className="block text-gray-700 font-semibold mb-2">
@@ -96,6 +105,9 @@ const SignupForm: React.FC = () => {
           }`}
           {...register("userPassword", { required: true })}
         />
+        {errors.userPassword && (
+          <span className="text-red-500 text-sm">This field is required</span>
+        )}
       </div>
       <button
         type="submit"
