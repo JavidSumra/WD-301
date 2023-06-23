@@ -39,7 +39,7 @@ const SignupForm: React.FC = () => {
       // console.log(userData);
       localStorage.setItem("authToken", userData.token);
       localStorage.setItem("userData", JSON.stringify(userData.user));
-      userNavigation("/account");
+        userNavigation("/account/members");
     } catch (error) {
       console.error("Sign-up failed:", error);
     }
