@@ -1,15 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import { API_ENDPOINT } from "../../config/constants";
 import { useNavigate } from "react-router-dom";
+import { useForm, SubmitHandler } from "react-hook-form";
+
+type Inputs = {
+  organisationName: string;
+  userName: string;
+  userEmail: string;
+  userPassword: string;
+};
 const SignupForm: React.FC = () => {
   const userNavigation = useNavigate();
-  const [organisationName, setOrganisationName] = useState("");
-  const [userName, setUserName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
-  const [userPassword, setUserPassword] = useState("");
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>();
 
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    const { organisationName, userName, userEmail, userPassword } = data;
     try {
       const response = await fetch(`${API_ENDPOINT}/organisations`, {
         method: "POST",
@@ -27,28 +36,28 @@ const SignupForm: React.FC = () => {
       }
       console.log("Sign-up successful");
       let userData = await response.json();
+      // console.log(userData);
       localStorage.setItem("authToken", userData.token);
       localStorage.setItem("userData", JSON.stringify(userData.user));
-      userNavigation("/dashboard");
-      // Dialogue: After successful signup we have to redirect the user to the secured page. We will do that later.
+      userNavigation("/account");
     } catch (error) {
       console.error("Sign-up failed:", error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div>
         <label className="block text-gray-700 font-semibold mb-2">
           Organisation Name:
         </label>
         <input
           type="text"
-          name="organisationName"
           id="organisationName"
-          value={organisationName}
-          onChange={(e) => setOrganisationName(e.target.value)}
-          className="w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue"
+          className={`w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
+            errors.organisationName ? "border-red-500" : ""
+          }`}
+          {...register("organisationName", { required: true })}
         />
       </div>
       <div>
@@ -57,22 +66,22 @@ const SignupForm: React.FC = () => {
         </label>
         <input
           type="text"
-          name="userName"
           id="userName"
-          value={userName}
-          onChange={(e) => setUserName(e.target.value)}
-          className="w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue"
+          className={`w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
+            errors.userName ? "border-red-500" : ""
+          }`}
+          {...register("userName", { required: true })}
         />
       </div>
       <div>
         <label className="block text-gray-700 font-semibold mb-2">Email:</label>
         <input
           type="email"
-          name="userEmail"
           id="userEmail"
-          value={userEmail}
-          onChange={(e) => setUserEmail(e.target.value)}
-          className="w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue"
+          className={`w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
+            errors.userEmail ? "border-red-500" : ""
+          }`}
+          {...register("userEmail", { required: true })}
         />
       </div>
       <div>
@@ -81,11 +90,11 @@ const SignupForm: React.FC = () => {
         </label>
         <input
           type="password"
-          name="userPassword"
           id="userPassword"
-          value={userPassword}
-          onChange={(e) => setUserPassword(e.target.value)}
-          className="w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue"
+          className={`w-full border rounded-md py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
+            errors.userPassword ? "border-red-500" : ""
+          }`}
+          {...register("userPassword", { required: true })}
         />
       </div>
       <button
