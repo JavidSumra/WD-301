@@ -95,7 +95,7 @@ const NewMember = () => {
                           errors.name ? "border-red-500" : ""
                         }`}
                       />
-                      {errors.name && <span>This field is required</span>}
+                      {errors.name && <span className="text-red-500 text-sm">This field is required</span>}
                       <input
                         type="email"
                         placeholder="Enter Member Email"
@@ -105,7 +105,7 @@ const NewMember = () => {
                           errors.email ? "border-red-500" : ""
                         }`}
                       />
-                      {errors.email && <span>This field is required</span>}
+                      {errors.email && <span className="text-red-500 text-sm">This field is required</span>}
                       <input
                         type="password"
                         id="password"
@@ -115,7 +115,7 @@ const NewMember = () => {
                           errors.password ? "border-red-500" : ""
                         }`}
                       />
-                      {errors.password && <span>This field is required</span>}
+                      {errors.password && <span className="text-red-500 text-sm">This field is required</span>}
                       <button
                         type="submit"
                         id="create-member-btn"
