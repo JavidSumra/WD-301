@@ -9,11 +9,7 @@ const App = () => {
   let { theme } = useContext(ThemeContext);
 
   return (
-    <div
-      className={`h-screen w-full mx-auto py-2 ${
-        theme === "dark" ? "dark" : ""
-      }`}
-    >
+    <div className={`h-screen w-full mx-auto py-2 `}>
       <ProjectsProvider>
         <MembersProvider>
           <RouterProvider router={router} />
