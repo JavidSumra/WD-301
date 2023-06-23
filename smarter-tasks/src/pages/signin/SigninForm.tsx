@@ -54,6 +54,9 @@ const SigninForm: React.FC = () => {
           }`}
           {...register("email", { required: true })}
         />
+        {errors.email && (
+          <span className="text-red-500 text-sm">This field is required</span>
+        )}
       </div>
       <div>
         <label
@@ -70,6 +73,9 @@ const SigninForm: React.FC = () => {
           }`}
           {...register("password", { required: true })}
         />
+        {errors.password && (
+          <span className="text-red-500 text-sm">This field is required</span>
+        )}
       </div>
       <button
         type="submit"
