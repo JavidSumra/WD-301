@@ -21,10 +21,12 @@ const Appbar = () => {
     let newTheme = "";
     if (theme === "light") {
       newTheme = "dark";
-      document.querySelector("#root").classList.add("dark");
+      // document.documentElement.classList.add("dark");
+      document.querySelector("#root")?.classList.add("dark");
     } else {
       newTheme = "light";
-      document.querySelector("#root").classList.remove("dark");
+      // document.documentElement.classList.remove("dark");
+      document.querySelector("#root")?.classList.remove("dark");
     }
     setEnabled(!enabled);
     setTheme(newTheme);
