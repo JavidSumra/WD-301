@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { fetchMembers } from "../../context/members/actions";
 import { useMembersDispatch } from "../../context/members/context";
-import MembersListItem from "./MembersListItem";
+import MembersListItem from "./MemberListItem";
 
 const MemberList: React.FC = () => {
   const dispactchMembers = useMembersDispatch();
