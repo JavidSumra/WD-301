@@ -28,7 +28,7 @@ export const addMember = async (dispatch: any, args: any) => {
 
 export const fetchMembers = async (dispatch: any) => {
   const token = localStorage.getItem("authToken") ?? "";
-  console.log(dispatch);
+  //console.log(dispatch);
   try {
     dispatch({ type: "FETCH_MEMBERS_REQUEST" });
     const response = await fetch(`${API_ENDPOINT}/users`, {
