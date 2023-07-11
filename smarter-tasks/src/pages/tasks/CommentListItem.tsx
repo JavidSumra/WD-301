@@ -9,6 +9,7 @@ const CommentListItem = () => {
     const user = membersState?.members?.filter((mem) => mem.id === userId)?.[0];
     return user?.name;
   };
+  console.log(state.commentData);
   const getDate = (createdDate: string): string => {
     let date = new Date(createdDate);
     return `${date.toLocaleDateString("en-In")} | ${date.toLocaleTimeString(
@@ -24,7 +25,7 @@ const CommentListItem = () => {
 
   return (
     <div className="mt-4">
-      {state.commentData.map((comment) => (
+      {state?.commentData.map((comment) => (
         <div
           key={comment.createdAt}
           className="comment my-2 font-medium border-b border-dashed border-black"
