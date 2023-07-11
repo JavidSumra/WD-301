@@ -9,7 +9,7 @@ const CommentListItem = () => {
     const user = membersState?.members?.filter((mem) => mem.id === userId)?.[0];
     return user?.name;
   };
-  //console.log(state.commentData);
+  console.log(state.commentData);
   const getDate = (createdDate: string): string => {
     let date = new Date(createdDate);
     return `${date.toLocaleDateString("en-In")} | ${date.toLocaleTimeString(
@@ -25,18 +25,20 @@ const CommentListItem = () => {
 
   return (
     <div className="mt-4">
-      {state?.commentData.map((comment) => (
-        <div
-          key={comment.createdAt}
-          className="comment my-2 font-medium border-b border-dashed border-black"
-        >
-          <div className="flex justify-between flex-wrap">
-            <div>{comment.description}</div>
-            <div className="uppercase">{getDate(comment.createdAt)}</div>
+      {state?.commentData.map((comment) => {
+        return (
+          <div
+            key={comment.createdAt}
+            className="comment my-2 font-medium border-b border-dashed border-black"
+          >
+            <div className="flex justify-between flex-wrap">
+              <div>{comment.description}</div>
+              <div className="uppercase">{getDate(comment.createdAt)}</div>
+            </div>
+            <div>{getUser(comment.owner)}</div>
           </div>
-          <div>{getUser(comment.owner)}</div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 };
