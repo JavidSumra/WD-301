@@ -19,7 +19,6 @@ export const FetchComments = async (
         if (!res.ok) {
             throw new Error("Failed to Fetch Comments")
         }
-        console.log(res);
         const data = await res.json();
         dispatch({ type: CommentListAvailableAction.FETCH_COMMENTS_SUCCESS, payload: data })
     } catch (error) {
@@ -50,6 +49,7 @@ export const AddComments = async (
         }
         const data = await res.json()
         dispatch({ type: CommentListAvailableAction.FETCH_COMMENTS_SUCCESS, payload: data })
+        FetchComments(dispatch, project_id, task_id)
     } catch (error) {
         console.log(`Operation Failed:${error}`)
         dispatch({ type: CommentListAvailableAction.CREATE_COMMENT_FAILURE, payload: "Failed To Create" })
