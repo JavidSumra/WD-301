@@ -39,7 +39,7 @@ export const fetchMembers = async (dispatch: any) => {
       },
     });
     const data = await response.json();
-    console.log(data);
+    //console.log(data);
     dispatch({ type: "FETCH_MEMBERS_SUCCESS", payload: data });
   } catch (error) {
     console.log(`Error while Fetching Members:${error}`);
