@@ -19,6 +19,7 @@ export const FetchComments = async (
         if (!res.ok) {
             throw new Error("Failed to Fetch Comments")
         }
+        console.log(data);
         const data = await res.json();
         dispatch({ type: CommentListAvailableAction.FETCH_COMMENTS_SUCCESS, payload: data })
     } catch (error) {
