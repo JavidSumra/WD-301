@@ -9,7 +9,7 @@ const CommentListItem = () => {
     const user = membersState?.members?.filter((mem) => mem.id === userId)?.[0];
     return user?.name;
   };
-  console.log(state.commentData);
+  //console.log(state.commentData);
   const getDate = (createdDate: string): string => {
     let date = new Date(createdDate);
     return `${date.toLocaleDateString("en-In")} | ${date.toLocaleTimeString(
