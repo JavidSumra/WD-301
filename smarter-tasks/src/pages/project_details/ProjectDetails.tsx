@@ -21,7 +21,7 @@ const ProjectDetails = () => {
   )?.[0];
 
   if (!selectedProject) {
-    return <>No such Project!</>;
+    throw new Error("Error !!!");
   }
 
   if (tasksState.isLoading) {
