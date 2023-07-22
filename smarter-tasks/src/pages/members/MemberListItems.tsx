@@ -9,8 +9,12 @@ export default function MembersListItem() {
   const dispatchMembers = useMembersDispatch();
   let state: any = useMembersState();
   const { members, isLoading, isError, errorMessage } = state;
+
   if (members.length === 0 && isLoading) {
     return <span>Loading...</span>;
+  }
+  if (members.length === 0) {
+    throw new Error("Error!");
   }
   if (isError) {
     return <span>{errorMessage}</span>;
@@ -32,11 +36,10 @@ export default function MembersListItem() {
         >
           <div className="flex items-center justify-end">
             <button onClick={() => handleDelete(member.id)}>
-            <TrashIcon
-              className="h-6 w-6 hover:text-red-500 duration-75"
-              aria-hidden="true"
-         
-            ></TrashIcon>
+              <TrashIcon
+                className="h-6 w-6 hover:text-red-500 duration-75"
+                aria-hidden="true"
+              ></TrashIcon>
             </button>
           </div>
           <h5 className="mb-2 text-xl font-medium tracking-tight text-gray-900 dark:text-white ">
